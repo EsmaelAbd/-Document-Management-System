@@ -22,7 +22,11 @@ class StoreCommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'body' => 'required|string|max:500',
+            'document' => 'required|file|mimes:pdf,doc,docx,txt|max:2048|mimetypes:application/pdf, application/doc, application/docx, application/txt',
+            'name' => 'required|string|max:255',
+            'taggable_id' => 'required|int',
+            'taggable_type' => 'required|string',
         ];
     }
 }

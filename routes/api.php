@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/documents/{document}/comments', [CommentController::class, 'storeForDocument']);
+
+Route::apiResource('comments', CommentController::class);

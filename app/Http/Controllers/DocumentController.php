@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCommentRequest;
 use App\Http\Resources\DocumentResource;
 use App\Models\Document;
 use Exception;
@@ -24,10 +25,10 @@ class DocumentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCommentRequest $request)
     {
         $request->validate([
-            'document' => 'required|file|mimes:pdf,doc,docx,txt|max:2048|mimetypes:document/pdf, document/doc, document/docx, document/txt'
+            'document' => 'required|file|mimes:pdf,doc,docx,txt|max:2048|mimetypes:application/pdf, application/doc, application/docx, application/txt'
         ]);
 
         $file = $request->document;

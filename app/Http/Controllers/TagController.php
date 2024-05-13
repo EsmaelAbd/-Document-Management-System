@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCommentRequest;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,7 @@ class TagController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreCommentRequest $request)
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
@@ -47,7 +48,7 @@ class TagController extends Controller
         return response()->json($tag);
     }
 
-    public function update(Request $request, Tag $tag)
+    public function update(StoreCommentRequest $request, Tag $tag)
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255'
