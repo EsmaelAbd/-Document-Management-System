@@ -16,4 +16,10 @@ class Document extends Model
         'mime_type',
         'size',
     ];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

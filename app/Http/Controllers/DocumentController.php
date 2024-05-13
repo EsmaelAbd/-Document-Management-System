@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\URL;
 
 class DocumentController extends Controller
 {
@@ -63,10 +62,17 @@ class DocumentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Document $document)
+    public function show(Document $document, $documentId)
     {
         $this->authorizeAccess($document);
         return new DocumentResource($document);
+
+        $document = Document::findOrFail($documentId);
+        $owner = $document->user;
+        return response()->json([
+            'document' => $document,
+            'owner' => $owner
+        ]);
     }
 
     /**
