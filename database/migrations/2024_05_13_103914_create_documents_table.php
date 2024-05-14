@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('mime_type')->nullable();
             $table->unsignedInteger('size');
             $table->timestamps();
-            $table->foreignId('user_id')->references('id')->on('user')->onDelete('cascade');
-            $table->index('user_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 
